@@ -1,7 +1,9 @@
+import { LibrariesEntity } from 'src/libraries/libraries.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
@@ -21,4 +23,7 @@ export class UsersEntity {
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: string;
+
+  @OneToOne(() => LibrariesEntity, (library) => library.owner)
+  library: LibrariesEntity;
 }

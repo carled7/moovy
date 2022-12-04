@@ -5,6 +5,8 @@ import { AppService } from './app.service';
 import { MoviesModule } from './movies/movies.module';
 import { UsersEntity } from './users/users.entity';
 import { UsersModule } from './users/users.module';
+import { LibrariesModule } from './libraries/libraries.module';
+import { MoviesInLibraryModule } from './movies-in-library/movies-in-library.module';
 
 @Module({
   imports: [
@@ -20,6 +22,8 @@ import { UsersModule } from './users/users.module';
       synchronize: true,
       entities: [UsersEntity],
     }),
+    LibrariesModule,
+    MoviesInLibraryModule,
   ],
   controllers: [AppController],
   providers: [AppService],
