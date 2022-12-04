@@ -19,7 +19,7 @@ export class LibrariesEntity {
   @JoinColumn()
   owner: UsersEntity;
 
-  @ManyToMany(() => MoviesInLibraryEntity, (movies) => movies.belongsTo)
+  @ManyToMany(() => MoviesInLibraryEntity)
   @JoinTable()
   movies: MoviesInLibraryEntity[];
 

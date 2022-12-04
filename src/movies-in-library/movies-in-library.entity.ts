@@ -1,4 +1,3 @@
-import { UsersEntity } from 'src/users/users.entity';
 import {
   Column,
   CreateDateColumn,
@@ -10,9 +9,6 @@ import {
 export class MoviesInLibraryEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
-
-  @Column()
-  belongsTo: UsersEntity;
 
   @Column({ nullable: false })
   title: string;
@@ -26,12 +22,9 @@ export class MoviesInLibraryEntity {
   @Column({ default: false })
   reviewed: boolean;
 
-  @Column({ nullable: false, type: 'blob' })
-  review: Blob;
+  @Column({ nullable: false, type: 'bytea' })
+  review: string;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: string;
-
-  @Column({ name: 'added_by' })
-  addedBy: UsersEntity;
 }
