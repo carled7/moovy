@@ -6,4 +6,5 @@ export class SaveUserDto {
   @IsEmail()
   email: string;
   password: string;
+  isInvited: string;
 }

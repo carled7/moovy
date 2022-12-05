@@ -15,11 +15,14 @@ export class UsersEntity {
   @Column({ nullable: false })
   name: string;
 
-  @Column({ nullable: false })
+  @Column({ nullable: false, unique: true })
   email: string;
 
   @Column({ nullable: false })
   password: string;
+
+  @Column({ default: null, name: 'is_invited' })
+  isInvited: string;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: string;
