@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { LibrariesEntity } from './libraries.entity';
+import { AddToLibraryDto } from './dto/AddToLibrary.dto';
+import { LibrariesRepository } from './libraries.repository';
 
 @Injectable()
 export class LibrariesService {
-  constructor(
-    @InjectRepository(LibrariesEntity)
-    private readonly libraryRepository: Repository<LibrariesEntity>,
-  ) {}
+  constructor(private readonly libraryRepository: LibrariesRepository) {}
+
+  async addFavorite(data: AddToLibraryDto) {
+    return this.libraryRepository.save(this.libraryRepository.create(data));
+  }
 }

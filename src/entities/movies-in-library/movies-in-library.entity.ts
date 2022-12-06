@@ -21,6 +21,9 @@ export class MoviesInLibraryEntity {
   @Column({ nullable: false })
   poster: string;
 
+  @Column({ name: 'imdb_rating', nullable: true })
+  imdbRating: string;
+
   @CreateDateColumn({ name: 'created_at' })
   createdAt: string;
 

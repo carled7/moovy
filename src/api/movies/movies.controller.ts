@@ -9,4 +9,9 @@ export class MoviesController {
   async getMovies(@Param() params) {
     return await this.moviesService.getMovies(params.name);
   }
+
+  @Get('id/:id')
+  async getMovieById(@Param() params) {
+    return await this.moviesService.getMovieById(params.id);
+  }
 }

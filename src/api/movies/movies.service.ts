@@ -19,4 +19,17 @@ export class MoviesService {
 
     return movies;
   }
+  async getMovieById(id: string) {
+    let movie: Movie;
+
+    const url = `http://www.omdbapi.com/?apikey=cc326247&type=movie&i=${id}`;
+
+    const { status, data } = await this.httpService.get(url).toPromise();
+
+    if (status === 200) {
+      movie = data;
+    }
+
+    return movie;
+  }
 }

@@ -22,7 +22,7 @@ export class LibrariesEntity {
   @JoinColumn({ name: 'imdb_id' })
   imdbId: MoviesInLibraryEntity;
 
-  @Column({ type: 'bytea' })
+  @Column({ type: 'bytea', nullable: true })
   review: string;
 
   @CreateDateColumn({ name: 'created_at' })
