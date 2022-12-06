@@ -7,5 +7,6 @@ import { MoviesController } from './movies.controller';
   imports: [HttpModule],
   controllers: [MoviesController],
   providers: [MoviesService],
+  exports: [MoviesService],
 })
 export class MoviesModule {}

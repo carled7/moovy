@@ -9,8 +9,8 @@ import { LibrariesEntity } from '../libraries/libraries.entity';
 
 @Entity({ name: 'movies_in_library' })
 export class MoviesInLibraryEntity {
-  @PrimaryColumn()
-  id: string;
+  @PrimaryColumn({ name: 'movie_id' })
+  movieId: string;
 
   @Column({ nullable: false })
   title: string;

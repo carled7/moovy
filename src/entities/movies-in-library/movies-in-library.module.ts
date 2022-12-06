@@ -8,5 +8,6 @@ import { MoviesInLibraryRepository } from './movies-in-library.repository';
   imports: [TypeOrmModule.forFeature([MoviesInLibraryRepository])],
   controllers: [MoviesInLibraryController],
   providers: [MoviesInLibraryService],
+  exports: [MoviesInLibraryService],
 })
 export class MoviesInLibraryModule {}

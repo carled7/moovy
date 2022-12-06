@@ -11,7 +11,7 @@ export class MoviesInLibraryService {
 
   async save(data): Promise<MoviesInLibraryEntity> {
     const movie: SaveMovieDto = {
-      id: data.imdbID,
+      movieId: data.imdbID,
       imdbRating: data.imdbRating,
       poster: data.Poster,
       title: data.Title,
@@ -21,5 +21,14 @@ export class MoviesInLibraryService {
     return this.moviesInLibraryRepository.save(
       this.moviesInLibraryRepository.create(movie),
     );
+  }
+
+  async has(id: string) {
+    const result = await this.moviesInLibraryRepository.find({
+      where: { movieId: id },
+    });
+
+    if (result.length == 0) return false;
+    else return true;
   }
 }
