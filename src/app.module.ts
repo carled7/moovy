@@ -2,13 +2,13 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { MoviesModule } from './movies/movies.module';
-import { UsersEntity } from './users/users.entity';
-import { UsersModule } from './users/users.module';
-import { LibrariesModule } from './libraries/libraries.module';
-import { MoviesInLibraryModule } from './movies-in-library/movies-in-library.module';
-import { LibrariesEntity } from './libraries/libraries.entity';
-import { MoviesInLibraryEntity } from './movies-in-library/movies-in-library.entity';
+import { MoviesModule } from './api/movies/movies.module';
+import { UsersEntity } from './entities/users/users.entity';
+import { UsersModule } from './entities/users/users.module';
+import { LibrariesModule } from './entities/libraries/libraries.module';
+import { MoviesInLibraryModule } from './entities/movies-in-library/movies-in-library.module';
+import { LibrariesEntity } from './entities/libraries/libraries.entity';
+import { MoviesInLibraryEntity } from './entities/movies-in-library/movies-in-library.entity';
 
 @Module({
   imports: [

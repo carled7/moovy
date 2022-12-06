@@ -2,12 +2,14 @@ import {
   Column,
   CreateDateColumn,
   Entity,
-  PrimaryGeneratedColumn,
+  OneToMany,
+  PrimaryColumn,
 } from 'typeorm';
+import { LibrariesEntity } from '../libraries/libraries.entity';
 
 @Entity({ name: 'movies_in_library' })
 export class MoviesInLibraryEntity {
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryColumn()
   id: string;
 
   @Column({ nullable: false })
@@ -19,12 +21,9 @@ export class MoviesInLibraryEntity {
   @Column({ nullable: false })
   poster: string;
 
-  @Column({ default: false })
-  reviewed: boolean;
-
-  @Column({ nullable: false, type: 'bytea' })
-  review: string;
-
   @CreateDateColumn({ name: 'created_at' })
   createdAt: string;
+
+  @OneToMany(() => LibrariesEntity, (library) => library.imdbId)
+  library: LibrariesEntity;
 }

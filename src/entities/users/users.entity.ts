@@ -1,9 +1,9 @@
-import { LibrariesEntity } from 'src/libraries/libraries.entity';
+import { LibrariesEntity } from 'src/entities/libraries/libraries.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
-  OneToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
@@ -21,12 +21,12 @@ export class UsersEntity {
   @Column({ nullable: false })
   password: string;
 
-  @Column({ default: null, name: 'is_invited' })
-  isInvited: string;
+  @Column({ default: null })
+  owner: boolean;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: string;
 
-  @OneToOne(() => LibrariesEntity, (library) => library.owner)
+  @OneToMany(() => LibrariesEntity, (library) => library.userId)
   library: LibrariesEntity;
 }
