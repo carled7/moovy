@@ -17,6 +17,7 @@ import { MoviesInLibraryEntity } from './entities/movies-in-library/movies-in-li
     LibrariesModule,
     MoviesInLibraryModule,
     TypeOrmModule.forRoot({
+      name: 'default',
       type: 'postgres',
       host: 'localhost',
       port: 5432,
@@ -26,9 +27,8 @@ import { MoviesInLibraryEntity } from './entities/movies-in-library/movies-in-li
       synchronize: true,
       entities: [UsersEntity, LibrariesEntity, MoviesInLibraryEntity],
       migrations: [],
+      autoLoadEntities: true,
     }),
-    LibrariesModule,
-    MoviesInLibraryModule,
   ],
   controllers: [AppController],
   providers: [AppService],
