@@ -19,6 +19,9 @@ export class MoviesInLibraryEntity {
   year: string;
 
   @Column({ nullable: false })
+  director: string;
+
+  @Column({ nullable: false })
   poster: string;
 
   @Column({ name: 'imdb_rating', nullable: true })

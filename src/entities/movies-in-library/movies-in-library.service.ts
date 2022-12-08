@@ -9,6 +9,7 @@ export class MoviesInLibraryService {
     private readonly moviesInLibraryRepository: MoviesInLibraryRepository,
   ) {}
 
+  //adds movies to the movies table
   async save(data): Promise<MoviesInLibraryEntity> {
     const movie: SaveMovieDto = {
       movieId: data.imdbID,
@@ -16,6 +17,7 @@ export class MoviesInLibraryService {
       poster: data.Poster,
       title: data.Title,
       year: data.Year,
+      director: data.Director,
     };
 
     return this.moviesInLibraryRepository.save(
@@ -23,6 +25,7 @@ export class MoviesInLibraryService {
     );
   }
 
+  //checks if a movie already exists in the database
   async has(id: string) {
     const result = await this.moviesInLibraryRepository.find({
       where: { movieId: id },
@@ -30,5 +33,14 @@ export class MoviesInLibraryService {
 
     if (result.length == 0) return false;
     else return true;
+  }
+
+  //return movie of a specific user`s library
+  async getMoviesByUser(data) {
+    const result = await this.moviesInLibraryRepository.findMoviesFromUser(
+      data,
+    );
+
+    return result;
   }
 }

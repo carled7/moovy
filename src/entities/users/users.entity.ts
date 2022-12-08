@@ -21,7 +21,7 @@ export class UsersEntity {
   @Column({ nullable: false })
   password: string;
 
-  @Column({ default: null })
+  @Column({ default: true })
   owner: boolean;
 
   @CreateDateColumn({ name: 'created_at' })

@@ -9,16 +9,17 @@ export class LibrariesService {
   constructor(private readonly libraryRepository: LibrariesRepository) {}
 
   @Inject(MoviesInLibraryService)
-  private readonly libMoviesService: MoviesInLibraryService;
+  private readonly moviesInLibraryService: MoviesInLibraryService;
 
   @Inject(MoviesService)
   private readonly moviesApiService: MoviesService;
 
+  //adds a movie as a favorite
   async addFavorite(data: AddToLibraryDto) {
     let movieIsKnown = false;
 
     //checks if the movie selected is already in the database
-    await this.libMoviesService
+    await this.moviesInLibraryService
       .has(data.imdbId.toString())
       .then((value) => (movieIsKnown = value));
 
@@ -26,13 +27,18 @@ export class LibrariesService {
       //if it exists, the relation user-movie is create in the libraries table
       return this.libraryRepository.save(this.libraryRepository.create(data));
     else {
-      //if it doesn`t, it is added to table moviesInLibrary table ...
+      //if it doesn`t, it is added to the table moviesInLibrary table ...
       await this.moviesApiService
         .getMovieById(data.imdbId.toString())
-        .then((movie) => this.libMoviesService.save(movie));
+        .then((movie) => this.moviesInLibraryService.save(movie));
 
       //...then, its relation with the user is created in the libraries table
       return this.libraryRepository.save(this.libraryRepository.create(data));
     }
+  }
+
+  async remove(data) {
+    //throw new NotFoundException();
+    await this.libraryRepository.delete({ id: data.id });
   }
 }

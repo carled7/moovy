@@ -11,6 +11,9 @@ export class SaveMovieDto {
   year: string;
 
   @IsString()
+  director: string;
+
+  @IsString()
   poster: string;
 
   @IsString()
