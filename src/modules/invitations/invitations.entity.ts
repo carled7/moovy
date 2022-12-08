@@ -13,9 +13,12 @@ export class InvitationsEntity {
   @PrimaryGeneratedColumn('uuid', { name: 'invitation_id' })
   invitationId: string;
 
-  @ManyToOne(() => UsersEntity, (user_id) => user_id.invitations)
-  @JoinColumn({ name: 'from_id' })
-  fromId: UsersEntity;
+  @ManyToOne(() => UsersEntity, (from) => from.libraries)
+  @JoinColumn([{ name: 'from', referencedColumnName: 'id' }])
+  from: UsersEntity;
+
+  @Column('uuid', { name: 'from_id' })
+  fromId: string;
 
   @Column({ nullable: false })
   email: string;

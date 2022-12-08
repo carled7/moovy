@@ -1,7 +1,7 @@
 import { Entity } from 'typeorm';
 
 @Entity()
-export class Movie {
+export class MovieDto {
   title: string;
   year: string;
   imdbID: string;

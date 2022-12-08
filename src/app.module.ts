@@ -1,16 +1,16 @@
-import { InvitationsModule } from './entities/invitations/invitations.module';
+import { InvitationsModule } from './modules/invitations/invitations.module';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { MoviesModule } from './api/movies/movies.module';
-import { UsersEntity } from './entities/users/users.entity';
-import { UsersModule } from './entities/users/users.module';
-import { LibrariesModule } from './entities/libraries/libraries.module';
-import { MoviesInLibraryModule } from './entities/movies-in-library/movies-in-library.module';
-import { LibrariesEntity } from './entities/libraries/libraries.entity';
-import { MoviesInLibraryEntity } from './entities/movies-in-library/movies-in-library.entity';
-import { InvitationsEntity } from './entities/invitations/invitations.entity';
+import { MoviesModule } from './api/OMDB/movies.module';
+import { UsersEntity } from './modules/users/users.entity';
+import { UsersModule } from './modules/users/users.module';
+import { LibrariesModule } from './modules/libraries/libraries.module';
+import { MoviesInLibraryModule } from './modules/movies-in-library/movies-in-library.module';
+import { LibrariesEntity } from './modules/libraries/libraries.entity';
+import { MoviesInLibraryEntity } from './modules/movies-in-library/movies-in-library.entity';
+import { InvitationsEntity } from './modules/invitations/invitations.entity';
 
 @Module({
   imports: [

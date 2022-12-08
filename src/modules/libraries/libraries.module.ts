@@ -4,7 +4,7 @@ import { LibrariesController } from './libraries.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { LibrariesRepository } from './libraries.repository';
 import { MoviesInLibraryModule } from '../movies-in-library/movies-in-library.module';
-import { MoviesModule } from 'src/api/movies/movies.module';
+import { MoviesModule } from 'src/api/OMDB/movies.module';
 
 @Module({
   imports: [

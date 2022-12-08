@@ -1,4 +1,4 @@
-import { LibrariesEntity } from 'src/entities/libraries/libraries.entity';
+import { LibrariesEntity } from 'src/modules/libraries/libraries.entity';
 import {
   Column,
   CreateDateColumn,
@@ -29,8 +29,8 @@ export class UsersEntity {
   createdAt: string;
 
   @OneToMany(() => LibrariesEntity, (library) => library.userId)
-  library: LibrariesEntity;
+  libraries: LibrariesEntity[];
 
-  @OneToMany(() => InvitationsEntity, (invitations) => invitations.fromId)
-  invitations: InvitationsEntity;
+  @OneToMany(() => InvitationsEntity, (invitations) => invitations.from)
+  invitations: InvitationsEntity[];
 }

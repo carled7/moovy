@@ -7,7 +7,8 @@ import { UsersRepository } from './users.repository';
 export class UsersService {
   constructor(private readonly usersRepository: UsersRepository) {}
 
-  async save(data: SaveUserDto): Promise<UsersEntity> {
-    return this.usersRepository.save(this.usersRepository.create(data));
+  async save(user: SaveUserDto): Promise<UsersEntity> {
+    const newUser = this.usersRepository.create(user);
+    return this.usersRepository.save(newUser);
   }
 }

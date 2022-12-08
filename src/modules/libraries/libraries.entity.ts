@@ -1,5 +1,5 @@
-import { MoviesInLibraryEntity } from 'src/entities/movies-in-library/movies-in-library.entity';
-import { UsersEntity } from 'src/entities/users/users.entity';
+import { MoviesInLibraryEntity } from 'src/modules/movies-in-library/movies-in-library.entity';
+import { UsersEntity } from 'src/modules/users/users.entity';
 import {
   Column,
   CreateDateColumn,
@@ -14,7 +14,7 @@ export class LibrariesEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @ManyToOne(() => UsersEntity, (user_id) => user_id.library)
+  @ManyToOne(() => UsersEntity, (user_id) => user_id.libraries)
   @JoinColumn({ name: 'user_id' })
   userId: UsersEntity;
 
