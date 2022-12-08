@@ -1,3 +1,4 @@
+import { InvitationsModule } from './entities/invitations/invitations.module';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
@@ -9,9 +10,11 @@ import { LibrariesModule } from './entities/libraries/libraries.module';
 import { MoviesInLibraryModule } from './entities/movies-in-library/movies-in-library.module';
 import { LibrariesEntity } from './entities/libraries/libraries.entity';
 import { MoviesInLibraryEntity } from './entities/movies-in-library/movies-in-library.entity';
+import { InvitationsEntity } from './entities/invitations/invitations.entity';
 
 @Module({
   imports: [
+    InvitationsModule,
     MoviesModule,
     UsersModule,
     LibrariesModule,
@@ -25,7 +28,12 @@ import { MoviesInLibraryEntity } from './entities/movies-in-library/movies-in-li
       username: 'postgres',
       password: 'postgres',
       synchronize: true,
-      entities: [UsersEntity, LibrariesEntity, MoviesInLibraryEntity],
+      entities: [
+        UsersEntity,
+        LibrariesEntity,
+        MoviesInLibraryEntity,
+        InvitationsEntity,
+      ],
       migrations: [],
       autoLoadEntities: true,
     }),

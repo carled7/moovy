@@ -9,5 +9,5 @@ export class AddToLibraryDto {
   @IsString()
   imdbId: MoviesInLibraryEntity;
 
-  review: null;
+  review?: string;
 }

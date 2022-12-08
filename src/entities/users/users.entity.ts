@@ -6,6 +6,7 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import { InvitationsEntity } from '../invitations/invitations.entity';
 
 @Entity({ name: 'users' })
 export class UsersEntity {
@@ -29,4 +30,7 @@ export class UsersEntity {
 
   @OneToMany(() => LibrariesEntity, (library) => library.userId)
   library: LibrariesEntity;
+
+  @OneToMany(() => InvitationsEntity, (invitations) => invitations.fromId)
+  invitations: InvitationsEntity;
 }

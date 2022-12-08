@@ -1,5 +1,5 @@
 import { Body, Controller, Delete, Param, Post } from '@nestjs/common';
-import { AddToLibraryDto } from './dto/AddToLibrary.dto';
+import { AddToLibraryDto } from './dto/add-to-library.dto';
 import { LibrariesService } from './libraries.service';
 
 @Controller('library')

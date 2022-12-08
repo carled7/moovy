@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { MoviesService } from 'src/api/movies/movies.service';
 import { MoviesInLibraryService } from '../movies-in-library/movies-in-library.service';
-import { AddToLibraryDto } from './dto/AddToLibrary.dto';
+import { AddToLibraryDto } from './dto/add-to-library.dto';
 import { LibrariesRepository } from './libraries.repository';
 
 @Injectable()
