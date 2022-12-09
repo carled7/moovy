@@ -5,8 +5,9 @@ import { LibrariesEntity } from './libraries.entity';
 @EntityRepository(LibrariesEntity)
 export class LibrariesRepository extends Repository<LibrariesEntity> {
   async addReview(libraryData: AddReviewDto) {
-    this
-      .query(`UPDATE libraries SET review = pg_read_binary_file('${libraryData.filePath}')
-        WHERE id = '${libraryData.libraryId}'`);
+    const [audioFile] = await this.query(
+      `SELECT pg_read_binary_file('${libraryData.filePath}')`,
+    );
+    await this.update({ id: libraryData.libraryId }, { review: audioFile });
   }
 }
