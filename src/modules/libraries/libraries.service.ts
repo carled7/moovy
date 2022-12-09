@@ -44,4 +44,8 @@ export class LibrariesService {
     //throw new NotFoundException();
     await this.libraryRepository.delete({ id: data.id });
   }
+
+  async uploadReview(libraryData) {
+    this.libraryRepository.addReview(libraryData);
+  }
 }
