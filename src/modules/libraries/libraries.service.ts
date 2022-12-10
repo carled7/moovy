@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { OMDBService } from 'src/api/OMDB/OMDB.service';
+import { UpdateResult } from 'typeorm';
 import { MoviesInLibraryService } from '../movies-in-library/movies-in-library.service';
 import { AddToLibraryDto } from './dto/add-to-library.dto';
 import { LibrariesEntity } from './libraries.entity';
@@ -45,7 +46,14 @@ export class LibrariesService {
     await this.libraryRepository.delete({ id: data.id });
   }
 
-  async uploadReview(libraryData) {
+  async uploadReview(libraryData): Promise<void> {
     this.libraryRepository.addReview(libraryData);
+  }
+  async uploadAudio(libraryId, audioFile): Promise<UpdateResult> {
+    const newAudio = await this.libraryRepository.update(
+      { id: libraryId },
+      { review: audioFile },
+    );
+    return newAudio;
   }
 }
