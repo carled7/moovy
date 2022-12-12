@@ -56,4 +56,15 @@ export class LibrariesService {
     );
     return newAudio;
   }
+
+  async getLibraryById(id: string): Promise<LibrariesEntity> {
+    return this.libraryRepository.findOne(id);
+  }
+  async removeReview(libraryId): Promise<void> {
+    await this.libraryRepository.update({ id: libraryId }, { review: null });
+  }
+  /*
+  async getMovieById(id: string): Promise<MoviesInLibraryEntity>{
+    return this.libraryRepository.
+  }*/
 }
