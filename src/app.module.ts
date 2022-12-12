@@ -5,7 +5,6 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MoviesModule } from './api/OMDB/movies.module';
 import { UsersEntity } from './modules/users/users.entity';
-import { UsersModule } from './modules/users/users.module';
 import { LibrariesModule } from './modules/libraries/libraries.module';
 import { MoviesInLibraryModule } from './modules/movies-in-library/movies-in-library.module';
 import { LibrariesEntity } from './modules/libraries/libraries.entity';
@@ -17,9 +16,9 @@ import { AuthModule } from './auth/auth.module';
   imports: [
     InvitationsModule,
     MoviesModule,
-    UsersModule,
     LibrariesModule,
     MoviesInLibraryModule,
+    AuthModule,
     TypeOrmModule.forRoot({
       name: 'default',
       type: 'postgres',
@@ -38,7 +37,6 @@ import { AuthModule } from './auth/auth.module';
       migrations: [],
       autoLoadEntities: true,
     }),
-    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

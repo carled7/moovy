@@ -8,6 +8,7 @@ import {
   Res,
   StreamableFile,
   UploadedFile,
+  UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
@@ -16,11 +17,13 @@ import { AddToLibraryDto } from './dto/add-to-library.dto';
 import { LibrariesEntity } from './libraries.entity';
 import { LibrariesService } from './libraries.service';
 import { Response } from 'express';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
 @Controller('library')
 export class LibrariesController {
   constructor(private readonly librariesService: LibrariesService) {}
 
+  @UseGuards(JwtAuthGuard)
   @Post()
   async save(@Body() body: AddToLibraryDto): Promise<LibrariesEntity> {
     return this.librariesService.addFavorite(body);
