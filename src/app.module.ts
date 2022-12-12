@@ -11,6 +11,8 @@ import { LibrariesEntity } from './modules/libraries/libraries.entity';
 import { MoviesInLibraryEntity } from './modules/movies-in-library/movies-in-library.entity';
 import { InvitationsEntity } from './modules/invitations/invitations.entity';
 import { AuthModule } from './auth/auth.module';
+import { TokenEntity } from './modules/token/token.entity';
+import { TokenModule } from './modules/token/token.module';
 
 @Module({
   imports: [
@@ -19,6 +21,7 @@ import { AuthModule } from './auth/auth.module';
     LibrariesModule,
     MoviesInLibraryModule,
     AuthModule,
+    TokenModule,
     TypeOrmModule.forRoot({
       name: 'default',
       type: 'postgres',
@@ -33,6 +36,7 @@ import { AuthModule } from './auth/auth.module';
         LibrariesEntity,
         MoviesInLibraryEntity,
         InvitationsEntity,
+        TokenEntity,
       ],
       migrations: [],
       autoLoadEntities: true,
