@@ -11,6 +11,7 @@ import { MoviesInLibraryModule } from './modules/movies-in-library/movies-in-lib
 import { LibrariesEntity } from './modules/libraries/libraries.entity';
 import { MoviesInLibraryEntity } from './modules/movies-in-library/movies-in-library.entity';
 import { InvitationsEntity } from './modules/invitations/invitations.entity';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -37,6 +38,7 @@ import { InvitationsEntity } from './modules/invitations/invitations.entity';
       migrations: [],
       autoLoadEntities: true,
     }),
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
