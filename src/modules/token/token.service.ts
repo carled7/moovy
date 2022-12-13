@@ -18,7 +18,7 @@ export class TokenService {
     private readonly authService: AuthService,
   ) {}
 
-  async save(hash: string, userEmail: string) {
+  async save(hash: string, userEmail: string): Promise<void> {
     const token = await this.tokenRepository.findOne({ email: userEmail });
     if (token) {
       this.tokenRepository.update(token.tokenId, { hash: hash });
@@ -30,7 +30,7 @@ export class TokenService {
     }
   }
 
-  async refreshToken(oldToken: string) {
+  async refreshToken(oldToken: string): Promise<string | HttpException> {
     const token = await this.tokenRepository.findOne({ hash: oldToken });
     if (token) {
       const user = await this.usersService.findOne(token.email);

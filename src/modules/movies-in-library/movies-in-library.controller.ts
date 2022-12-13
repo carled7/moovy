@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
-import { UsersEntity } from '../users/users.entity';
-import { MoviesInLibraryEntity } from './movies-in-library.entity';
+import { MoviesInLibraryDto } from './dto/movies-in-library.dto';
+import { MoviesInLibraryMapper } from './mapper/movies-in-library.mapper';
 import { MoviesInLibraryService } from './movies-in-library.service';
 
 @Controller('movies-in-library')
@@ -10,12 +10,19 @@ export class MoviesInLibraryController {
   ) {}
 
   @Post()
-  async save(@Body() body): Promise<MoviesInLibraryEntity> {
-    return this.moviesInLibraryService.save(body);
+  async save(@Body() body): Promise<MoviesInLibraryDto> {
+    const newMovie = await this.moviesInLibraryService.save(body);
+    return MoviesInLibraryMapper.fromEntityToDto(newMovie);
   }
 
   @Get('/:id')
-  async find(@Param() user: UsersEntity): Promise<MoviesInLibraryEntity[]> {
-    return this.moviesInLibraryService.getMoviesByUser(user.id);
+  async findMoviesByUser(
+    @Param('id') userId: string,
+  ): Promise<MoviesInLibraryDto[]> {
+    const movies = await this.moviesInLibraryService.getMoviesByUser(userId);
+    movies.map((movie) => {
+      return MoviesInLibraryMapper.fromEntityToDto(movie);
+    });
+    return movies;
   }
 }

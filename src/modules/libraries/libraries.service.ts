@@ -41,9 +41,9 @@ export class LibrariesService {
     }
   }
 
-  async remove(data): Promise<void> {
+  async remove(id: string): Promise<void> {
     //throw new NotFoundException();
-    await this.libraryRepository.delete({ id: data.id });
+    await this.libraryRepository.delete({ id: id });
   }
 
   async uploadReview(libraryData): Promise<void> {
@@ -60,11 +60,12 @@ export class LibrariesService {
   async getLibraryById(id: string): Promise<LibrariesEntity> {
     return this.libraryRepository.findOne(id);
   }
+
   async removeReview(libraryId): Promise<void> {
     await this.libraryRepository.update({ id: libraryId }, { review: null });
   }
-  /*
-  async getMovieById(id: string): Promise<MoviesInLibraryEntity>{
-    return this.libraryRepository.
-  }*/
+
+  async findOne(libraryId: string): Promise<LibrariesEntity> {
+    return this.libraryRepository.findOne(libraryId);
+  }
 }

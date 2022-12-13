@@ -13,7 +13,7 @@ export class AuthService {
     private readonly tokenService: TokenService,
   ) {}
 
-  async validateUser(email: string, pass: string): Promise<any> {
+  async validateUser(email: string, pass: string): Promise<string | null> {
     const user = await this.usersService.findOne(email);
     if (user && bcrypt.compareSync(pass, user.password)) {
       return user.email;
@@ -21,12 +21,10 @@ export class AuthService {
     return null;
   }
 
-  async login(username) {
+  async login(username: string): Promise<string> {
     const payload = { username: username };
     const token = this.jwtService.sign(payload);
     this.tokenService.save(token, username);
-    return {
-      access_token: token,
-    };
+    return token;
   }
 }
