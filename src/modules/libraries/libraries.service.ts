@@ -34,6 +34,7 @@ export class LibrariesService {
       const movie = await this.omdbService.getMovieById(
         relationUserMovie.imdbId.toString(),
       );
+
       this.moviesInLibraryService.save(movie);
       //...then, its relation with the user is created in the libraries table
       const newRelation = this.libraryRepository.create(relationUserMovie);
